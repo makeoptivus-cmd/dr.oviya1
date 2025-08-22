@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dr. Sarah Johnson - Cardiologist</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        .star {
+            cursor: pointer;
+            transition: color 0.2s;
+        }
+        .star:hover,
+        .star.active {
+            color: #fbbf24;
+        }
+        .fade-in {
+            animation: fadeIn 0.5s ease-in;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-800">
+    <!-- Hero Section -->
+    <section class="bg-gradient-to-r from-blue-600 to-blue-800 text-white py-20">
+        <div class="container mx-auto px-6 text-center">
+            <div class="mb-8">
+                <!-- Doctor Photo Placeholder -->
+                <div class="w-32 h-32 mx-auto mb-6 rounded-full bg-blue-300 flex items-center justify-center text-6xl">
+                    👩‍⚕
+                </div>
+                <h1 class="text-4xl md:text-5xl font-bold mb-4">Dr. Sarah Johnson</h1>
+                <h2 class="text-xl md:text-2xl text-blue-200 mb-4">Board-Certified Cardiologist</h2>
+                <p class="text-lg text-blue-100 max-w-2xl mx-auto">
+                    "Dedicated to providing exceptional cardiac care with compassion and cutting-edge medical expertise"
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="py-16 bg-white">
+        <div class="container mx-auto px-6">
+            <h2 class="text-3xl font-bold text-center mb-12 text-gray-800">About Dr. Johnson</h2>
+            
+            <div class="grid md:grid-cols-2 gap-12 max-w-6xl mx-auto">
+                <!-- Biography -->
+                <div class="space-y-6">
+                    <h3 class="text-2xl font-semibold text-blue-700 mb-4">Biography</h3>
+                    <p class="text-gray-600 leading-relaxed">
+                        Dr. Sarah Johnson is a highly respected cardiologist with over 15 years of experience in cardiovascular medicine. She specializes in preventive cardiology, heart disease management, and advanced cardiac procedures.
+                    </p>
+                    <p class="text-gray-600 leading-relaxed">
+                        Known for her patient-centered approach, Dr. Johnson combines the latest medical advances with personalized care to help her patients achieve optimal heart health.
+                    </p>
+                </div>
+
+                <!-- Education & Experience -->
+                <div class="space-y-8">
+                    <!-- Education -->
+                    <div>
+                        <h3 class="text-2xl font-semibold text-blue-700 mb-4 flex items-center">
+                            🎓 Education
+                        </h3>
+                        <div class="space-y-3">
+                            <div class="bg-gray-50 p-4 rounded-lg">
+                                <h4 class="font-semibold">MD - Harvard Medical School</h4>
+                                <p class="text-gray-600">Graduated Magna Cum Laude, 2005</p>
+                            </div>
+                            <div class="bg-gray-50 p-4 rounded-lg">
+                                <h4 class="font-semibold">Residency - Johns Hopkins Hospital</h4>
+                                <p class="text-gray-600">Internal Medicine, 2005-2008</p>
+                            </div>
+                            <div class="bg-gray-50 p-4 rounded-lg">
+                                <h4 class="font-semibold">Fellowship - Mayo Clinic</h4>
+                                <p class="text-gray-600">Cardiovascular Disease, 2008-2011</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Certifications -->
+                    <div>
+                        <h3 class="text-2xl font-semibold text-blue-700 mb-4 flex items-center">
+                            🏆 Certifications
+                        </h3>
+                        <div class="grid grid-cols-1 gap-3">
+                            <div class="bg-blue-50 p-3 rounded-lg flex items-center">
+                                <span class="text-blue-600 mr-3">✓</span>
+                                <span>Board Certified in Cardiovascular Disease</span>
+                            </div>
+                            <div class="bg-blue-50 p-3 rounded-lg flex items-center">
+                                <span class="text-blue-600 mr-3">✓</span>
+                                <span>Advanced Cardiac Life Support (ACLS)</span>
+                            </div>
+                            <div class="bg-blue-50 p-3 rounded-lg flex items-center">
+                                <span class="text-blue-600 mr-3">✓</span>
+                                <span>Echocardiography Certification</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Patient Review Submission Section -->
+    <section class="py-16 bg-gray-100">
+        <div class="container mx-auto px-6">
+            <h2 class="text-3xl font-bold text-center mb-12 text-gray-800">Share Your Experience</h2>
+            
+            <div class="max-w-2xl mx-auto bg-white rounded-lg shadow-lg p-8">
+                <form id="reviewForm" class="space-y-6">
+                    <div>
+                        <label for="patientName" class="block text-sm font-medium text-gray-700 mb-2">Your Name</label>
+                        <input type="text" id="patientName" name="patientName" required
+                               class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                    </div>
+
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-2">Rating</label>
+                        <div class="flex space-x-1" id="starRating">
+                            <span class="star text-3xl text-gray-300" data-rating="1">★</span>
+                            <span class="star text-3xl text-gray-300" data-rating="2">★</span>
+                            <span class="star text-3xl text-gray-300" data-rating="3">★</span>
+                            <span class="star text-3xl text-gray-300" data-rating="4">★</span>
+                            <span class="star text-3xl text-gray-300" data-rating="5">★</span>
+                        </div>
+                        <input type="hidden" id="ratingValue" name="rating" value="0">
+                    </div>
+
+                    <div>
+                        <label for="reviewMessage" class="block text-sm font-medium text-gray-700 mb-2">Your Review</label>
+                        <textarea id="reviewMessage" name="reviewMessage" rows="4" required
+                                  class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                                  placeholder="Share your experience with Dr. Johnson..."></textarea>
+                    </div>
+
+                    <button type="submit" 
+                            class="w-full bg-blue-600 text-white py-3 px-6 rounded-lg hover:bg-blue-700 transition duration-200 font-semibold">
+                        Submit Review
+                    </button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Displayed Reviews Section -->
+    <section class="py-16 bg-white">
+        <div class="container mx-auto px-6">
+            <h2 class="text-3xl font-bold text-center mb-12 text-gray-800">Patient Reviews</h2>
+            
+            <div id="reviewsContainer" class="max-w-4xl mx-auto space-y-6">
+                <!-- Sample Reviews -->
+                <div class="bg-gray-50 rounded-lg p-6 shadow-md">
+                    <div class="flex items-center justify-between mb-4">
+                        <h4 class="font-semibold text-lg text-gray-800">Michael Chen</h4>
+                        <div class="flex text-yellow-400">
+                            <span>★★★★★</span>
+                        </div>
+                    </div>
+                    <p class="text-gray-600 leading-relaxed">
+                        "Dr. Johnson is exceptional! She took the time to explain my condition thoroughly and made me feel comfortable throughout the entire process. Her expertise and caring approach made all the difference in my treatment."
+                    </p>
+                    <p class="text-sm text-gray-400 mt-3">2 weeks ago</p>
+                </div>
+
+                <div class="bg-gray-50 rounded-lg p-6 shadow-md">
+                    <div class="flex items-center justify-between mb-4">
+                        <h4 class="font-semibold text-lg text-gray-800">Lisa Rodriguez</h4>
+                        <div class="flex text-yellow-400">
+                            <span>★★★★★</span>
+                        </div>
+                    </div>
+                    <p class="text-gray-600 leading-relaxed">
+                        "I've been seeing Dr. Johnson for 3 years now. She's incredibly knowledgeable and always makes time to answer my questions. I trust her completely with my heart health."
+                    </p>
+                    <p class="text-sm text-gray-400 mt-3">1 month ago</p>
+                </div>
+
+                <div class="bg-gray-50 rounded-lg p-6 shadow-md">
+                    <div class="flex items-center justify-between mb-4">
+                        <h4 class="font-semibold text-lg text-gray-800">Robert Thompson</h4>
+                        <div class="flex text-yellow-400">
+                            <span>★★★★☆</span>
+                        </div>
+                    </div>
+                    <p class="text-gray-600 leading-relaxed">
+                        "Professional and thorough. Dr. Johnson helped me understand my heart condition and developed a treatment plan that has significantly improved my quality of life."
+                    </p>
+                    <p class="text-sm text-gray-400 mt-3">2 months ago</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-blue-800 text-white py-8">
+        <div class="container mx-auto px-6 text-center">
+            <p class="mb-2">&copy; 2024 Dr. Sarah Johnson, MD. All rights reserved.</p>
+            <p class="text-blue-200">Providing exceptional cardiac care with compassion and expertise.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Star rating functionality
+        const stars = document.querySelectorAll('.star');
+        const ratingValue = document.getElementById('ratingValue');
+        let currentRating = 0;
+
+        stars.forEach(star => {
+            star.addEventListener('click', () => {
+                currentRating = parseInt(star.dataset.rating);
+                ratingValue.value = currentRating;
+                updateStars();
+            });
+
+            star.addEventListener('mouseover', () => {
+                const hoverRating = parseInt(star.dataset.rating);
+                highlightStars(hoverRating);
+            });
+        });
+
+        document.getElementById('starRating').addEventListener('mouseleave', () => {
+            updateStars();
+        });
+
+        function updateStars() {
+            stars.forEach((star, index) => {
+                if (index < currentRating) {
+                    star.classList.add('active');
+                    star.classList.remove('text-gray-300');
+                } else {
+                    star.classList.remove('active');
+                    star.classList.add('text-gray-300');
+                }
+            });
+        }
+
+        function highlightStars(rating) {
+            stars.forEach((star, index) => {
+                if (index < rating) {
+                    star.style.color = '#fbbf24';
+                } else {
+                    star.style.color = '#d1d5db';
+                }
+            });
+        }
+
+        // Review submission functionality
+        document.getElementById('reviewForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const name = document.getElementById('patientName').value;
+            const rating = parseInt(document.getElementById('ratingValue').value);
+            const message = document.getElementById('reviewMessage').value;
+
+            if (rating === 0) {
+                alert('Please select a rating before submitting your review.');
+                return;
+            }
+
+            // Create new review element
+            const reviewsContainer = document.getElementById('reviewsContainer');
+            const newReview = document.createElement('div');
+            newReview.className = 'bg-gray-50 rounded-lg p-6 shadow-md fade-in';
+            
+            const starsHtml = '★'.repeat(rating) + '☆'.repeat(5 - rating);
+            
+            newReview.innerHTML = `
+                <div class="flex items-center justify-between mb-4">
+                    <h4 class="font-semibold text-lg text-gray-800">${name}</h4>
+                    <div class="flex text-yellow-400">
+                        <span>${starsHtml}</span>
+                    </div>
+                </div>
+                <p class="text-gray-600 leading-relaxed">${message}</p>
+                <p class="text-sm text-gray-400 mt-3">Just now</p>
+            `;
+
+            // Add new review at the top
+            reviewsContainer.insertBefore(newReview, reviewsContainer.firstChild);
+
+            // Reset form
+            this.reset();
+            currentRating = 0;
+            ratingValue.value = 0;
+            updateStars();
+
+            // Show success message
+            alert('Thank you for your review! It has been added successfully.');
+        });
+    </script>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'972fceff41bf7fda',t:'MTc1NTgzODg0OC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>
