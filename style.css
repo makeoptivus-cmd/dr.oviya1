@@ -4,7 +4,7 @@
 }
 .star:hover,
 .star.active {
-    color: #fbbf24;
+    color: gold;
 }
 .fade-in {
     animation: fadeIn 0.5s ease-in;
@@ -13,3 +13,4 @@
     from { opacity: 0; transform: translateY(20px); }
     to { opacity: 1; transform: translateY(0); }
 }
+
