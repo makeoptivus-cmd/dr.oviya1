@@ -1,49 +1,43 @@
-// Star rating functionality
-const stars = document.querySelectorAll('.star');
-const ratingValue = document.getElementById('ratingValue');
-let currentRating = 0;
+// Initialize Supabase
+const SUPABASE_URL = "https://wzeiduiiesbaacqdyffc.supabase.co";
+const SUPABASE_ANON_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Ind6ZWlkdWlpZXNiYWFjcWR5ZmZjIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTYwNDAzNzYsImV4cCI6MjA3MTYxNjM3Nn0.Xq0v8AXWaRXtxbWiCzbGuE-zYK5ummxEgGI_sK5YstI";
+const supabase = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
 
-stars.forEach(star => {
-    star.addEventListener('click', () => {
-        currentRating = parseInt(star.dataset.rating);
-        ratingValue.value = currentRating;
-        updateStars();
-    });
+// Load reviews on page load
+async function loadReviews() {
+    const { data, error } = await supabase
+        .from('reviews')
+        .select('*')
+        .order('created_at', { ascending: false });
 
-    star.addEventListener('mouseover', () => {
-        const hoverRating = parseInt(star.dataset.rating);
-        highlightStars(hoverRating);
-    });
-});
+    if (error) {
+        console.error("Error loading reviews:", error);
+        return;
+    }
 
-document.getElementById('starRating').addEventListener('mouseleave', () => {
-    updateStars();
-});
+    const reviewsContainer = document.getElementById('reviewsContainer');
+    reviewsContainer.innerHTML = ""; // clear placeholder
 
-function updateStars() {
-    stars.forEach((star, index) => {
-        if (index < currentRating) {
-            star.classList.add('active');
-            star.classList.remove('text-gray-300');
-        } else {
-            star.classList.remove('active');
-            star.classList.add('text-gray-300');
-        }
-    });
-}
-
-function highlightStars(rating) {
-    stars.forEach((star, index) => {
-        if (index < rating) {
-            star.style.color = '#fbbf24';
-        } else {
-            star.style.color = '#d1d5db';
-        }
+    data.forEach(r => {
+        const starsHtml = '★'.repeat(r.rating) + '☆'.repeat(5 - r.rating);
+        const newReview = document.createElement('div');
+        newReview.className = 'bg-gray-50 rounded-lg p-6 shadow-md fade-in';
+        newReview.innerHTML = `
+            <div class="flex items-center justify-between mb-4">
+                <h4 class="font-semibold text-lg text-gray-800">${r.name}</h4>
+                <div class="flex text-yellow-400">
+                    <span>${starsHtml}</span>
+                </div>
+            </div>
+            <p class="text-gray-600 leading-relaxed">${r.message}</p>
+            <p class="text-sm text-gray-400 mt-3">${new Date(r.created_at).toLocaleString()}</p>
+        `;
+        reviewsContainer.appendChild(newReview);
     });
 }
 
-// Review submission functionality
-document.getElementById('reviewForm').addEventListener('submit', function(e) {
+// Submit review to Supabase
+document.getElementById('reviewForm').addEventListener('submit', async function(e) {
     e.preventDefault();
     
     const name = document.getElementById('patientName').value;
@@ -55,33 +49,26 @@ document.getElementById('reviewForm').addEventListener('submit', function(e) {
         return;
     }
 
-    // Create new review element
-    const reviewsContainer = document.getElementById('reviewsContainer');
-    const newReview = document.createElement('div');
-    newReview.className = 'bg-gray-50 rounded-lg p-6 shadow-md fade-in';
-    
-    const starsHtml = '★'.repeat(rating) + '☆'.repeat(5 - rating);
-    
-    newReview.innerHTML = `
-        <div class="flex items-center justify-between mb-4">
-            <h4 class="font-semibold text-lg text-gray-800">${name}</h4>
-            <div class="flex text-yellow-400">
-                <span>${starsHtml}</span>
-            </div>
-        </div>
-        <p class="text-gray-600 leading-relaxed">${message}</p>
-        <p class="text-sm text-gray-400 mt-3">Just now</p>
-    `;
+    const { error } = await supabase
+        .from('reviews')
+        .insert([{ name, rating, message }]);
 
-    // Add new review at the top
-    reviewsContainer.insertBefore(newReview, reviewsContainer.firstChild);
+    if (error) {
+        console.error("Error saving review:", error);
+        alert("Error saving review. Try again.");
+        return;
+    }
+
+    // Reload reviews
+    loadReviews();
 
     // Reset form
     this.reset();
     currentRating = 0;
     ratingValue.value = 0;
     updateStars();
-
-    // Show success message
-    alert('Thank you for your review! It has been added successfully.');
+    alert('Thank you for your review!');
 });
+
+// Call on page load
+window.addEventListener("DOMContentLoaded", loadReviews);
