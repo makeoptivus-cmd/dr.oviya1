@@ -1,20 +1,17 @@
-<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dr. Sarah Johnson - Cardiologist</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="style.css">
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-<script src="script.js" defer></script>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body class="bg-gray-50 text-gray-800">
+
     <!-- Hero Section -->
     <section class="bg-gradient-to-r from-blue-600 to-blue-800 text-white py-20">
         <div class="container mx-auto px-6 text-center">
             <div class="mb-8">
-                <!-- Doctor Photo Placeholder -->
                 <div class="w-32 h-32 mx-auto mb-6 rounded-full bg-blue-300 flex items-center justify-center text-6xl">
                     👩‍⚕️
                 </div>
@@ -33,7 +30,6 @@
             <h2 class="text-3xl font-bold text-center mb-12 text-gray-800">About Dr. Johnson</h2>
             
             <div class="grid md:grid-cols-2 gap-12 max-w-6xl mx-auto">
-                <!-- Biography -->
                 <div class="space-y-6">
                     <h3 class="text-2xl font-semibold text-blue-700 mb-4">Biography</h3>
                     <p class="text-gray-600 leading-relaxed">
@@ -44,13 +40,9 @@
                     </p>
                 </div>
 
-                <!-- Education & Experience -->
                 <div class="space-y-8">
-                    <!-- Education -->
                     <div>
-                        <h3 class="text-2xl font-semibold text-blue-700 mb-4 flex items-center">
-                            🎓 Education
-                        </h3>
+                        <h3 class="text-2xl font-semibold text-blue-700 mb-4 flex items-center">🎓 Education</h3>
                         <div class="space-y-3">
                             <div class="bg-gray-50 p-4 rounded-lg">
                                 <h4 class="font-semibold">MD - Harvard Medical School</h4>
@@ -67,11 +59,8 @@
                         </div>
                     </div>
 
-                    <!-- Certifications -->
                     <div>
-                        <h3 class="text-2xl font-semibold text-blue-700 mb-4 flex items-center">
-                            🏆 Certifications
-                        </h3>
+                        <h3 class="text-2xl font-semibold text-blue-700 mb-4 flex items-center">🏆 Certifications</h3>
                         <div class="grid grid-cols-1 gap-3">
                             <div class="bg-blue-50 p-3 rounded-lg flex items-center">
                                 <span class="text-blue-600 mr-3">✓</span>
@@ -137,48 +126,7 @@
     <section class="py-16 bg-white">
         <div class="container mx-auto px-6">
             <h2 class="text-3xl font-bold text-center mb-12 text-gray-800">Patient Reviews</h2>
-            
-            <div id="reviewsContainer" class="max-w-4xl mx-auto space-y-6">
-                <!-- Sample Reviews -->
-                <div class="bg-gray-50 rounded-lg p-6 shadow-md">
-                    <div class="flex items-center justify-between mb-4">
-                        <h4 class="font-semibold text-lg text-gray-800">Michael Chen</h4>
-                        <div class="flex text-yellow-400">
-                            <span>★★★★★</span>
-                        </div>
-                    </div>
-                    <p class="text-gray-600 leading-relaxed">
-                        "Dr. Johnson is exceptional! She took the time to explain my condition thoroughly and made me feel comfortable throughout the entire process. Her expertise and caring approach made all the difference in my treatment."
-                    </p>
-                    <p class="text-sm text-gray-400 mt-3">2 weeks ago</p>
-                </div>
-
-                <div class="bg-gray-50 rounded-lg p-6 shadow-md">
-                    <div class="flex items-center justify-between mb-4">
-                        <h4 class="font-semibold text-lg text-gray-800">Lisa Rodriguez</h4>
-                        <div class="flex text-yellow-400">
-                            <span>★★★★★</span>
-                        </div>
-                    </div>
-                    <p class="text-gray-600 leading-relaxed">
-                        "I've been seeing Dr. Johnson for 3 years now. She's incredibly knowledgeable and always makes time to answer my questions. I trust her completely with my heart health."
-                    </p>
-                    <p class="text-sm text-gray-400 mt-3">1 month ago</p>
-                </div>
-
-                <div class="bg-gray-50 rounded-lg p-6 shadow-md">
-                    <div class="flex items-center justify-between mb-4">
-                        <h4 class="font-semibold text-lg text-gray-800">Robert Thompson</h4>
-                        <div class="flex text-yellow-400">
-                            <span>★★★★☆</span>
-                        </div>
-                    </div>
-                    <p class="text-gray-600 leading-relaxed">
-                        "Professional and thorough. Dr. Johnson helped me understand my heart condition and developed a treatment plan that has significantly improved my quality of life."
-                    </p>
-                    <p class="text-sm text-gray-400 mt-3">2 months ago</p>
-                </div>
-            </div>
+            <div id="reviewsContainer" class="max-w-4xl mx-auto space-y-6"></div>
         </div>
     </section>
 
@@ -191,15 +139,5 @@
     </footer>
 
     <script src="script.js"></script>
-<input id="name" placeholder="Your name" />
-<input id="rating" type="number" min="1" max="5" />
-<textarea id="message" placeholder="Your review"></textarea>
-<button onclick="saveReview()">Submit</button>
-
-<ul id="reviews"></ul>
-
 </body>
 </html>
-
-
-
