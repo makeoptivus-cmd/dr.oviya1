@@ -72,3 +72,4 @@ document.getElementById('reviewForm').addEventListener('submit', async function(
 
 // Call on page load
 window.addEventListener("DOMContentLoaded", loadReviews);
+
